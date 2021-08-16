@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <title>signup</title>
+    <meta char="utf-8">
+    <style>
+        header {
+            padding: 10px;
+            color: black;
+            background-color: skyblue;
+        }
+
+        article {
+            margin: 5px;
+            padding: 10px;
+            background-color: rgb(236, 235, 235);
+        }
+    </style>
+    <script>
+        function sign() { }
+        alert("회원 가입이 완료 되었습니다.");
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <article>
+            <form action="/information" method="POST">
+                <table id="table">
+                    <tr id="table">
+                        <td>이름</td>
+                        <td>
+                            <input type="text" name="name_is" placeholder="성명" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>학번</td>
+                        <td>
+                            <input type="text" name="id_is" placeholder="아이디" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호</td>
+                        <td>
+                            <input type="password" name="pw_is" placeholder="비밀번호" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호 확인</td>
+                        <td>
+                            <input type="password" name="pw2_is" placeholder="비밀번호 확인" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>학년</td>
+                        <td>
+                            <select name="grade_is">
+                                <option value="1" selected(초기 선택된 항목)>1학년</option>
+                                <option value="2">2학년</option>
+                                <option value="3">3학년</option>
+                                <option value="4">4학년</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>학과</td>
+                        <td>
+                            <select name="department_is">
+                                <option value="컴퓨터공학과" selected(초기 선택된 항목)>컴퓨터공학과</option>
+                                <option value="응용화학">응용화학</option>
+                                <option value="응용수학">응용수학</option>
+                                <option value="건축학과">건축학과</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" name="submit" value="완료" onclick="sign()" />
+                            <input type="reset" name="reset" value="리셋" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </article>
+    </header>
+</body>
+
+</html>

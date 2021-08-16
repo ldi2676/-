@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <title>login</title>
+    <meta char="utf-8">
+    <style>
+        header {
+            padding: 10px;
+            color: black;
+            background-color: skyblue;
+        }
+
+        article {
+            margin: 5px;
+            padding: 10px;
+            background-color: rgb(236, 235, 235);
+        }
+    </style>
+    <script>
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <article>
+            <h2>로그인 페이지</h2>
+            <fieldset>
+                <form action="/sign" method="GET">
+                    <input type="submit" value="회원가입">
+                </form>
+                <form action="/login" method="POST">
+                    <table>
+                        <tr>
+                            <td style="border : 2px solid black">학번</td>
+                            <td style="border : 2px solid black">
+                                <input type="text" name="id_input" placeholder="아이디" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border : 2px solid black">비밀번호</td>
+                            <td style="border : 2px solid black">
+                                <input type="password" name="pw_input" placeholder="비밀번호" />
+                            </td>
+                        </tr>
+                    </table>
+                    <input type="submit" value="로그인" />
+                </form>
+            </fieldset>
+        </article>
+    </header>
+</body>
+
+
+</html>

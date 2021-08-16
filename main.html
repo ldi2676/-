@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <title>main</title>
+    <meta char="utf-8">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <style>
+        header {
+            padding: 10px;
+            text-align: center;
+            color: white;
+            background-color: skyblue;
+        }
+
+        footer {
+            padding: 10px;
+            color: white;
+            background-color: skyblue;
+        }
+
+        #save,
+        #logout {
+            float: right;
+            padding: 3px;
+            color: white;
+            background-color: skyblue;
+        }
+
+        section {
+            margin: 5px;
+            padding: 10px;
+            background-color: rgb(223, 221, 221);
+        }
+
+        article {
+            margin: 5px;
+            padding: 10px;
+            background-color: rgb(236, 235, 235);
+        }
+
+        nav span {
+            color: royalblue;
+            font-size: 100%;
+            border: 2px solid black;
+            display: inline-block;
+            margin: 2px;
+        }
+
+        nav span:hover {
+            color: aqua;
+            font-size: 100%;
+            border: 2px solid black;
+            display: inline-block;
+            margin: 4px;
+        }
+
+        td,
+        th {
+            border: 2px solid black;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+    <!--<script>
+        window.onload = () => {
+            $.ajax({
+                method: "GET", // 요청 방식
+                url: "/input", // 요청 URL
+                success: function (data) { // 성공 시 호출 콜백
+                    let elem = document.createElement('td'); //li요소 생성
+                    elem.innerHTML = data.id;
+                    $('#name').before(elem);//jQuery 문법
+
+                    let elem = document.createElement('td'); //li요소 생성
+                    elem.innerHTML = data.name;
+                    $('#dep').before(elem);//jQuery 문법
+
+                    let elem = document.createElement('td'); //li요소 생성
+                    elem.innerHTML = data.dep;
+                    $('#fir').before(elem);//jQuery 문법
+
+                    let elem = document.createElement('td'); //li요소 생성
+                    elem.innerHTML = data.grade;
+                    $('#nop').before(elem);//jQuery 문법
+
+                },
+                error: function (request, status, error) {
+                    alert("code" + request.status + "\n" + "message:" + request.responseText + "\n" + "error" + error);
+                },
+                complete: function () {
+                    console.log('complete')
+                }
+            })
+        }
+    </script>-->
+
+</head>
+
+<body>
+    <header>
+        <h1>수강신청 시스템</h1>
+    </header>
+    <section>
+        <nav>
+            <span>
+                <a href="#강의목록">강의목록</a>
+            </span>
+            <span>
+                <a href="#내수강신청">나의 수강신청 목록</a>
+            </span>
+        </nav>
+    </section>
+    <article>
+        <table>
+            <form action="/logout" method="POST">
+                <right>
+                    <input id="logout" type="submit" value="로그아웃" onclick="location.href='/login.html'" />
+                </right>
+            </form>
+        </table>
+        <br>
+        <form action="/log" method="">
+            <table style="border : 2px solid black">
+                <tr>
+                    <th id="id">학번</th>
+
+                    <th id="name">성명</th>
+
+                    <th id="dep">학과</th>
+
+                    <th id="fir" style="display: none"></th>
+                </tr>
+                <tr>
+
+                    <th id="grade">학년</th>
+
+                    <th id="nop">공학인증</th>
+                    <td>공학인증대상자</td>
+                </tr>
+                <tr>
+                    <th id="">복수전공</th>
+                    <td>해당없음</td>
+                    <th>부전공</th>
+                    <td>해당없음</td>
+                    <th>교직</th>
+                    <td>해당없음</td>
+                </tr>
+            </table>
+            <br>
+        </form>
+        <form action="/save" method="POST">
+            <right>
+                <input id="save" type="submit" value="저장" />
+            </right>
+            <br>
+        </form>
+    </article>
+    <article>
+        <form action="/subject" method="POST">
+            <table>
+                <tr>
+                    <th>교과목코드</th>
+                    <td>
+                        <input type="text" value=" " onclick="" />
+                    </td>
+                    <th>담당교수</th>
+                    <td>
+                        <input type="text" value=" " onclick="" />
+                    </td>
+                    <th>강의시간</th>
+                    <td>
+                        <input type="text" value=" " onclick="" />
+                    </td>
+                    <td>
+                        <input type="submit" value="조회" onclick="" />
+                    </td>
+                </tr>
+            </table>
+
+            <h3>강의 목록</h3>
+            <table style="border : 2px solid black">
+                <tr>
+                    <th>No.</th>
+                    <th>교육과정명</th>
+                    <th>이수학년</th>
+                    <th>교과목명</th>
+                    <th>학점</th>
+                    <th>교과목코드</th>
+                    <th>담당교수</th>
+                    <th>강의시간/강의실</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>컴퓨터공학과</td>
+                    <td>1</td>
+                    <td>창의공학설계입문</td>
+                    <td>3</td>
+                    <td>CD0003-01</td>
+                    <td>전준철</td>
+                    <td>D129</td>
+                    <td>
+                        <input type="submit" name="submit" value="추가" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>컴퓨터공학과</td>
+                    <td>1</td>
+                    <td>컴퓨터공학입문</td>
+                    <td>1</td>
+                    <td>CD0058-01</td>
+                    <td>황준하</td>
+                    <td>D127</td>
+                    <td>
+                        <input type="submit" name="submit" value="추가" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>컴퓨터공학과</td>
+                    <td>2</td>
+                    <td>자바프로그래밍</td>
+                    <td>3</td>
+                    <td>CD0017-01</td>
+                    <td>김영학</td>
+                    <td>D231</td>
+                    <td>
+                        <input type="submit" name="submit" value="추가" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>컴퓨터공학과</td>
+                    <td>2</td>
+                    <td>자료구조</td>
+                    <td>3</td>
+                    <td>CD0062-01</td>
+                    <td>김영학</td>
+                    <td>D128</td>
+                    <td>
+                        <input type="submit" name="submit" value="추가" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>컴퓨터공학과</td>
+                    <td>3</td>
+                    <td>운영체제</td>
+                    <td>3</td>
+                    <td>CD0018-01</td>
+                    <td>최태영</td>
+                    <td>D128</td>
+                    <td>
+                        <input type="submit" name="submit" value="추가" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>컴퓨터공학과</td>
+                    <td>3</td>
+                    <td>데이터베이스</td>
+                    <td>3</td>
+                    <td>CD0020-01</td>
+                    <td>오병우</td>
+                    <td>D231</td>
+                    <td>
+                        <input type="submit" name="submit" value="추가" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>컴퓨터공학과</td>
+                    <td>4</td>
+                    <td>창의설계프로젝트1</td>
+                    <td>2</td>
+                    <td>CD0033-01</td>
+                    <td>장춘서</td>
+                    <td>D129</td>
+                    <td>
+                        <input type="submit" name="submit" value="추가" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </article>
+
+    <article>
+        <form action="/mysubject" method="POST">
+            <h3>나의 수강신청 현황</h3>
+            <table style="border : 2px solid black">
+                <tr>
+                    <th>No.</th>
+                    <th>교육과정명</th>
+                    <th>이수학년</th>
+                    <th>교과목명</th>
+                    <th>학점</th>
+                    <th>교과목코드</th>
+                    <th>담당교수</th>
+                    <th>강의시간/강의실</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>컴퓨터공학과</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="삭제" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>컴퓨터공학과</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="삭제" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>컴퓨터공학과</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="삭제" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>컴퓨터공학과</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="삭제" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>컴퓨터공학과</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="삭제" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>컴퓨터공학과</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="삭제" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>컴퓨터공학과</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="삭제" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </article>
+    <footer>
+        <p>&copy;
+            <small>이 파일은 과제용으로만 제작되었습니다. 20170786 이동익</small>
+        </p>
+    </footer>
+
+</body>
+
+</html>
